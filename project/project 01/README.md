@@ -1,5 +1,3 @@
-@'
-
 \# Corporate Loan Credit Scoring Project
 
 \*\*Stage:\*\* Problem Framing \& Scoping (Stage 01)
@@ -66,9 +64,7 @@ Goal → Stage → Deliverable
 
 Folders: `/data/`, `/src/`, `/notebooks/`, `/docs/`  
 
-README updated each stage; commits weekly or at each milestone.
 
-'@ | Set-Content -Encoding UTF8 .\\project\\credit\_scoring\_corporate\_loans\\README.md
 
 
 
