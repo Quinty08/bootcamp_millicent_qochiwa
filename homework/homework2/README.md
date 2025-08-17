@@ -1,4 +1,28 @@
-**Corporate Loan Credit Scoring Project**
+\# Bootcamp Repository
 
-This project aims to build a reproducible Python workflow for evaluating the creditworthiness of corporate borrowers. The goal is to create a structured, data-driven framework that can ingest historical loan and financial data, configure environment settings securely, and allow for consistent analysis and modeling across different machines and users. This setup ensures that all future exploratory data analysis, feature engineering, and predictive modeling can be performed in a controlled, reproducible environment.
+
+
+\## Folder Structure
+
+\- \*\*homework/\*\* → All homework contributions will be submitted here.
+
+\- \*\*project/\*\* → All project contributions will be submitted here.
+
+\- \*\*class\_materials/\*\* → Local storage for class materials. Never pushed to GitHub.
+
+
+
+\## Homework Folder Rules
+
+\- Each homework will be in its own subfolder (`homework0`, `homework1`, etc.)
+
+\- Include all required files for grading.
+
+
+
+\## Project Folder Rules
+
+\- Keep project files organized and clearly named.
+
+
 
