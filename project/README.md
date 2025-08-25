@@ -2,7 +2,7 @@
 
 
 
-\*\*Stage:\*\* Problem Framing \& Scoping (Stage 01)
+##\*\*Stage:\*\* Problem Framing \& Scoping (Stage 01)
 
 
 
@@ -82,6 +82,18 @@ The project is organized for maintainability and clarity:
 - `.gitignore` added to exclude temporary, OS, and sensitive files.  
 - `requirements.txt` added to capture the Python environment (`bootcamp_env`) for reproducibility.  
 - Initial scaffolding for `/data/`, `/docs/`, `/notebooks/`, `/src/`, and `/tests/` prepared.  
+
+## Stage 03 — Python Fundamentals
+
+**Objective:** Establish modular, reusable Python code for preprocessing and analysis.
+
+**Deliverables:**
+- `notebooks/python_fundamentals_summary.ipynb` — dummy data demonstrating Python, pandas, and NumPy operations.
+- `src/utils.py` — reusable utility function(s) with documentation.
+
+**Next Steps:**  
+Use these utilities in future stages for data preprocessing, modeling, and EDA.
+
 
 
 
