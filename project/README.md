@@ -69,4 +69,19 @@ The project should deliver a \*\*predictive model\*\* that estimates the probabi
 Folders: `/data/`, `/src/`, `/notebooks/`, `/docs/`
 
 
+## Stage 02 — Tooling Setup
+
+**Objective:**  
+Establish a reproducible project environment, prepare folder structure, and ensure version control for all future stages.
+
+**Folder Structure:**  
+The project is organized for maintainability and clarity:
+
+
+**Key Setup Items:**  
+- `.gitignore` added to exclude temporary, OS, and sensitive files.  
+- `requirements.txt` added to capture the Python environment (`bootcamp_env`) for reproducibility.  
+- Initial scaffolding for `/data/`, `/docs/`, `/notebooks/`, `/src/`, and `/tests/` prepared.  
+
+
 
