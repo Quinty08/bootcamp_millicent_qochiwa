@@ -118,6 +118,23 @@ Use these utilities in future stages for data preprocessing, modeling, and EDA.
 - All identifiers anonymized to protect privacy.
 - Dataset ready for ingestion and preprocessing in subsequent stages.
 
+## Data Storage
+
+Our project uses the following storage conventions:
+
+- **data/raw/**: contains the original datasets exactly as obtained (e.g., `raw_loan_data.xlsx`, plus CSV and Parquet versions).
+- **data/processed/**: contains intermediate and cleaned datasets prepared for modeling.
+
+### File formats
+- **Excel (.xlsx)**: original raw file
+- **CSV (.csv)**: lightweight, portable version of raw and processed data
+- **Parquet (.parquet)**: efficient binary format for large-scale processing
+
+### Environment-driven paths
+We use a `.env` file to define paths for data files. Example keys:
+
+Never commit `.env`; instead, use `.env.example` for sharing path structure.
+
 
 
 
