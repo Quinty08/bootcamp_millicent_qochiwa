@@ -94,6 +94,30 @@ The project is organized for maintainability and clarity:
 **Next Steps:**  
 Use these utilities in future stages for data preprocessing, modeling, and EDA.
 
+## Stage 04: Data Acquisition / Ingestion
+
+**Raw data location:** `data/raw/xtenda_final.csv`  
+
+**Data source:** Pre-collected dataset (XTENDA), anonymized for privacy.  
+- Original IDs and employee names were replaced with `ID_#` and `Employee_#`.  
+- Synthetic columns added: `Region`, `Gender`, `Age`.  
+
+**Columns:**
+- ID number
+- Personnel Number
+- Name of employee
+- Basic Salary
+- Payment
+- AFFORDABILITY
+- Loan_ID
+- Region
+- Gender
+- Age
+
+**Notes:**
+- All identifiers anonymized to protect privacy.
+- Dataset ready for ingestion and preprocessing in subsequent stages.
+
 
 
 
