@@ -118,7 +118,7 @@ Use these utilities in future stages for data preprocessing, modeling, and EDA.
 - All identifiers anonymized to protect privacy.
 - Dataset ready for ingestion and preprocessing in subsequent stages.
 
-## Data Storage
+## Stage 05 Data Storage
 
 Our project uses the following storage conventions:
 
@@ -134,6 +134,71 @@ Our project uses the following storage conventions:
 We use a `.env` file to define paths for data files. Example keys:
 
 Never commit `.env`; instead, use `.env.example` for sharing path structure.
+
+## Stage 06 – Data Preprocessing
+Overview
+
+In this stage, the project moves from raw data storage into data preprocessing. The goal is to clean, transform, and prepare the dataset so that it is ready for modeling in later stages.
+
+The preprocessing pipeline was designed to be modular and reusable, with functions stored in src/cleaning.py and demonstrated in a Jupyter notebook.
+
+Preprocessing Steps
+
+Loading Raw Data
+
+The raw loan dataset is loaded from the /data/raw/ directory.
+
+File paths are managed through environment variables defined in .env.example to ensure portability.
+
+Handling Missing Values
+
+Columns such as Tenure, LoanDate, DisbursementAmount, LastPaymentDate, PrincipalBalance, LoanStatus, InterestRate, LoanPurpose, RetirementDate, and IsNPL contained missing values.
+
+Missing value strategies:
+
+Numeric columns (e.g., LoanAmount, Instalment, PrincipalBalance): imputed using median values or left as NaN where business meaning requires.
+
+Categorical columns (e.g., LoanStatus, Regions, LoanPurpose): imputed using mode or flagged as "Unknown".
+
+Date columns (e.g., LoanDate, DisbursementDate, LastPaymentDate): parsed into datetime objects, missing entries flagged for further review.
+
+Data Type Conversion
+
+Converted salary, payment, and loan amounts to numeric.
+
+Converted date columns into proper datetime objects.
+
+Converted categorical fields (Gender, Regions, LoanStatus, LoanPurpose) to categorical data types for efficiency.
+
+Feature Engineering
+
+Derived additional features such as:
+
+Debt-to-Income Ratio (DTI) = Instalment / Basic Salary.
+
+Loan Age = difference between today’s date and LoanDate.
+
+These features will support downstream modeling tasks.
+
+Saving Processed Data
+
+The cleaned dataset is saved to /data/processed/processed_loans.csv and /data/processed/processed_loans.parquet.
+
+This ensures a reproducible, consistent version of the dataset for all teammates.
+
+Assumptions & Rationale
+
+Blank values in loan-related columns represent incomplete loan history rather than errors; imputation was done conservatively.
+
+Salary and payment fields are assumed to be monthly values.
+
+Loan IDs are unique identifiers and not altered.
+
+Gender, Regions, and LoanStatus values outside expected categories were grouped into "Unknown" for consistency.
+
+Dates with missing values were not forward/backward filled since doing so would introduce artificial patterns into loan timelines.
+
+
 
 
 
