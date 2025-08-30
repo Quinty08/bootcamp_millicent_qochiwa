@@ -17,4 +17,7 @@ Thumbs.db
 
 # Optional: exclude raw data if sensitive
 data/raw/*
+/data/raw/
+/data/processed/
+
 ".env" 
