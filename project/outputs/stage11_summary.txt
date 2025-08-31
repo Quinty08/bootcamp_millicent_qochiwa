@@ -1,0 +1,30 @@
+
+Stage 11 — Evaluation & Risk Communication
+
+Key findings:
+- Best-performing scenario (based on MAE/RMSE): {'MAE': 108.55737700409139, 'RMSE': 314.12961761128497, 'R2': 0.9717122337011855}
+- Linear model is more interpretable but RandomForest gives better predictive performance (lower MAE/RMSE).
+- Bootstrap 95% CI for MAE (linear mean): (np.float64(162.71166470387166), np.float64(182.82618622311244))
+- Bootstrap 95% CI for MAE (rf mean): (np.float64(99.67695349525603), np.float64(118.3916308677518))
+
+Subgroup analysis (by Region):
+   group   n    MAE_lin     MAE_rf
+Woodlawn 905 178.459295 110.005548
+ Gilmore 897 164.182537  99.158966
+   Venus 872 181.978458 115.696452
+ Hogerty 870 164.421424 109.585545
+
+Assumptions:
+- Missing values handled by mean or median imputation in scenarios; results sensitive to imputation strategy.
+- Preprocessing dropped identifier-like columns and encoded categorical variables.
+
+Risks:
+- Model may be biased for small subgroups (see subgroup diagnostics).
+- Capping/trimming/outliers treatment impacts tail predictions.
+- For production, monitor model drift, prediction distributions, and subgroup performance.
+
+Recommended next steps:
+1. Run subgroup fairness checks and confusion/risk thresholds (if converting to classification).
+2. Conduct stress tests for extreme inputs (large loan amounts, very low salary).
+3. Add monitoring for AFFORDABILITY prediction distribution and retrain schedule.
+

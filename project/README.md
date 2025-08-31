@@ -325,8 +325,99 @@ Additional features may be created after further domain analysis or model diagno
 **Rationale:** Start with a simple linear baseline for interpretability, check regularized versions for stability, and benchmark against a non-linear tree ensemble. RandomForest provided a significant performance boost, showing the presence of non-linear relationships.  
 
 
+tage 10b – Modeling (Regression) with Diagnostics
+
+Target: AFFORDABILITY (numeric)
+
+Train-Test Split: Time-aware on LoanDate (last 20% as test set)
+
+Features:
+
+All numeric and categorical features except identifiers and date columns
+
+Includes engineered features from Stage 09: DebtToIncome, PrincipalPaidPct, HighSalaryFlag
+
+Models Tried:
+
+Linear Regression
+
+RidgeCV
+
+LassoCV
+
+RandomForestRegressor
+
+Evaluation Metrics (Test Set):
+
+Model	MAE	RMSE	R²
+Linear	172.27	360.66	0.963
+RidgeCV	172.57	360.77	0.963
+LassoCV	171.38	361.39	0.963
+RandomForest	108.56	314.13	0.972
+
+Residual Analysis (Linear Regression):
+
+Residuals vs Fitted plot shows residuals roughly centered around zero; no clear trend → homoscedasticity is reasonable.
+
+QQ plot indicates residuals approximately follow a normal distribution, supporting linear regression assumptions.
+
+Some extreme residuals exist (outliers), consistent with heavy-tailed financial data.
+
+Rationale & Next Steps:
+
+Linear regression provides interpretability and baseline performance.
+
+RandomForest improves predictive accuracy, especially for extreme cases, but loses coefficient interpretability.
+
+Stage 10b confirms that our features and preprocessing are suitable for regression modeling.
+
+Future improvements: consider robust regression or additional transformations to handle tail behavior and extreme residuals.
 
 
+##Stage 11 — Evaluation & Risk Communication
 
+What we evaluated
+
+Models: Linear Regression and RandomForest.
+
+Imputation strategies: mean vs. median for missing values.
+
+Metrics: MAE, RMSE (manual sqrt of MSE), R².
+
+Uncertainty quantification: Bootstrap 95% confidence intervals for MAE.
+
+Subgroup diagnostics: performance per region to check fairness/consistency.
+
+Key results
+
+RandomForest (mean imputation) performed best (lowest MAE & RMSE).
+
+Linear regression remains more interpretable but had higher error.
+
+Bootstrap confidence intervals highlight uncertainty ranges; overlapping CIs may suggest results are not statistically distinct.
+
+Subgroup results showed variation across regions, suggesting the need for fairness checks.
+
+Assumptions & risks
+
+Results depend on how missing values are imputed.
+
+Identifier-like columns were removed to prevent data leakage.
+
+Model performance could degrade under outliers or shifted input distributions.
+
+Next steps
+
+Run fairness and stress tests (especially for high-risk inputs).
+
+Monitor prediction distributions, feature drift, and subgroup accuracy in production.
+
+Plan retraining cadence and document productionization steps.
+
+Files
+
+notebooks/stage11_evaluation.ipynb — evaluation code and plots.
+
+outputs/ — saved pipelines, summary (stage11_summary.txt), and metrics CSV.
 
 
