@@ -21,3 +21,4 @@ data/raw/*
 /data/processed/
 
 ".env" 
+"outputs/rf_mean_pipeline.pkl" 
