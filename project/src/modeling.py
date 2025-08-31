@@ -160,3 +160,6 @@ def linear_coeff_table(fitted_pipe):
         return pd.DataFrame({"feature": feat_names, "coef": coefs}).sort_values("coef", key=abs, ascending=False)
     else:
         return pd.DataFrame({"feature": feat_names})
+
+
+
