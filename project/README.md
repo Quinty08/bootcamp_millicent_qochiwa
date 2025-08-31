@@ -301,6 +301,32 @@ These features will be used in subsequent modeling stages for risk assessment an
 Additional features may be created after further domain analysis or model diagnostics.
 
 
+## Stage 10a – Modeling (Regression)
+
+**Target:** `AFFORDABILITY` (numeric).
+
+**Split:** Time-aware split on `LoanDate` (last 20% used as test). Falls back to random split if `LoanDate` missing.
+
+**Features:** All numeric and categorical columns except identifiers and date fields; includes engineered features from Stage 09 (e.g., `DebtToIncome`, `PrincipalPaidPct`, `HighSalaryFlag`).
+
+**Pipelines:** Preprocessing via `ColumnTransformer` (StandardScaler for numeric, One-Hot for categorical), then model.
+
+**Models tried:** 
+- Linear Regression  
+- RidgeCV  
+- LassoCV  
+- RandomForestRegressor  
+
+**Evaluation:** Metrics reported on the test set: MAE, RMSE, R².  
+- RandomForest performed best (MAE ~108, RMSE ~316, R² ≈ 0.97).  
+- Linear, Ridge, and Lasso were similar (MAE ~172, RMSE ~361, R² ≈ 0.963).  
+- Regularization (Ridge/Lasso) did not yield major gains over plain Linear Regression.
+
+**Rationale:** Start with a simple linear baseline for interpretability, check regularized versions for stability, and benchmark against a non-linear tree ensemble. RandomForest provided a significant performance boost, showing the presence of non-linear relationships.  
+
+
+
+
 
 
 
