@@ -10,15 +10,19 @@ __pycache__/
 .env
 .env.* 
 *.env
+.venv/
+.venv/*
 
 # OS files
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
 
-# Optional: exclude raw data if sensitive
-data/raw/*
-/data/raw/
-/data/processed/
-
-".env" 
-"outputs/rf_mean_pipeline.pkl" 
+# Data & outputs to ignore
+data/raw/
+data/processed/
+model/*.pkl
+reports/*.png
+reports/*.pdf
+outputs/rf_mean_pipeline.pkl

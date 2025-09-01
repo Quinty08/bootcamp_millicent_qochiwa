@@ -421,3 +421,71 @@ notebooks/stage11_evaluation.ipynb — evaluation code and plots.
 outputs/ — saved pipelines, summary (stage11_summary.txt), and metrics CSV.
 
 
+
+
+##Stage 13
+# Financial Engineering Project — Loan Default Prediction
+
+Predict loan defaults using historical client data with a RandomForest model. Provides model, reports, API, and Streamlit dashboard.
+
+## Structure
+
+project/
+│
+├─ data/processed/ # cleaned CSVs
+├─ model/ # saved model(s)
+├─ reports/ # metrics, plots, summaries
+├─ src/
+│ ├─ utils.py # data prep, model, plotting, analysis
+│
+├─ app_streamlit.py # Streamlit dashboard
+├─ app.py # Flask API
+├─ requirements.txt
+├─ README.md
+└─ tests/
+└─ test_utils.py
+
+
+
+git clone https://github.com/Quinty08/bootcamp_millicent_qochiwa.git
+cd C:\Users\qochi\bootcamp_millicent_qochiwa\project
+
+# Windows
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+
+# Validate tests
+pytest -q
+Quick usage
+Run full analysis (model + reports):
+
+
+python -c "from src.utils import run_full_analysis; print(run_full_analysis())"
+Run API (Flask):
+
+
+set FLASK_APP=app.py    # Windows
+export FLASK_APP=app.py # Mac/Linux
+flask run
+Example prediction via API:
+
+
+curl -X POST http://127.0.0.1:5000/predict \
+ -H "Content-Type: application/json" \
+ -d '{"features": {"age": 30, "basic_salary": 50000, "disbursementamount": 10000, "instalment": 500, "interestrate": 5.0}}'
+Run Streamlit dashboard:
+
+
+streamlit run app_streamlit.py
+Notes, assumptions, and limitations
+Dataset: cleaned, missing values filled (affordability → 0), numeric features only.
+
+Target: loan_default (binary or numeric depending on your dataset).
+
+Risks: model drift, small dataset, limited validation.
+
+Next steps: cross-validation, additional features, model explainability, deployment pipeline.
+
+
